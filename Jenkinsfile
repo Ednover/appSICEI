@@ -25,6 +25,7 @@ pipeline {
     stage('Build') {
       steps {
         sh "sudo docker build . -t sicei-${env.BRANCH_NAME}:1.0.0-${env.BUILD_NUMBER}"
+        sh "sudo docker run -p 8000:8080 sicei-${env.BRANCH_NAME}:1.0.0-${env.BUILD_NUMBER}"
       }
     }
   }
